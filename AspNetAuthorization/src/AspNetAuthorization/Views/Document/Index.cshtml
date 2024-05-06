@@ -1,0 +1,19 @@
+﻿
+@using AspNetAuthorization.Authorization;
+@{
+    ViewBag.Title = "Resource Auth";
+}
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Resource Based Authorization Samples</h1>
+        <p>The action section uses the AuthorizationService to adjust the UI based upon the current user permissions.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Would you like to learn more?</a></p>
+    </div>
+</div>
+<div class="container">
+    @if (await AuthorizationService.AuthorizeAsync(User, new Document(), Operations.Create))
+    {
+        <p><a class="btn btn-default" role="button" href="@Url.Action("Create", "Document")">Create</a></p>        
+    }    
+</div>
